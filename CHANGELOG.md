@@ -54,3 +54,13 @@
 ![](imgs/dia2/3.png)
 
 - Se ejecutaron correctamente los tests.
+
+# Día 3: Implementación de la clase Quiz y flujo básico del juego
+
+ - Creamos la clase `Quiz` en `trivia.py` para gestionar las preguntas del juego.
+
+ - Se implementó la función `run_quiz()` para manejar el flujo del juego en la consola.
+
+- Hasta ahora quedó así el juego de Trivia. 
+
+![](imgs/dia3/1.png)
