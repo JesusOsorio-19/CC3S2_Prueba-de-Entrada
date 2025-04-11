@@ -30,3 +30,27 @@
 - Se realizó el merge de `feature/dia1` → `develop` → `main`
 
 - Se etiquetó el avance con el tag: `v1.0-day1`
+
+## Día 2: Implementación de la clase Question y pruebas unitarias
+
+- Creamos la clase `Question` en `app/trivia.py`, encargada de representar una pregunta de trivia.
+
+  - Atributos: descripción de la pregunta, lista de las 4 posibles respuestas y el índice de la respuesta correcta.
+  - Método `is_correct(self, answer_index)` para verificar si el índice ingresado por el jugador es el correcto.
+
+- Creamos las pruebas unitarias en `tests/test_trivia.py` usando `pytest`.
+
+  - Se añadió una tercera prueba para verificar que el índice de la respuesta no esté fuera de rango.
+
+- Solucionamos un problema al ejecutar `pytest` agregando un archivo `__init__.py` en la carpeta `app/`. Para que así Python tome la carpeta `app` como paquete importable.
+
+![](imgs/dia2/1.png)
+
+- Creamos el archivo `pytest.ini` para automatizar la configuración del entorno de pruebas.
+
+
+  - Esto permite ejecutar `pytest` directamente sin necesidad de declarar el `PYTHONPATH` manualmente.
+
+![](imgs/dia2/3.png)
+
+- Se ejecutaron correctamente los tests.
