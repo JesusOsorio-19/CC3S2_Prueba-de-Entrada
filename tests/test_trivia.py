@@ -1,5 +1,5 @@
 import pytest
-from app.trivia import Question
+from app.trivia import Quiz, Question
 
 # test: respuesta correcta
 def test_question_correct_answer():
@@ -15,3 +15,11 @@ def test_question_incorrect_answer():
 def test_question_out_of_range_index():
 	question = Question("¿Qué equipo es el más ganador de la UEFA Champions League?", ["Real Madrid", "Barcelona", "AC Milan", "Liverpool"], 0)
 	assert not question.is_correct(4) 
+
+def test_quiz_scoring():
+	quiz = Quiz()
+	question = Question("¿Qué equipo es el más ganador de la UEFA Champions League?", ["Real Madrid", "Barcelona", "AC Milan", "Liverpool"], 0)
+	quiz.add_question(question)
+
+	assert quiz.answer_question(question, 0) == True
+	assert quiz.correct_answers == 1
