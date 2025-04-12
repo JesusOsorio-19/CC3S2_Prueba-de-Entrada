@@ -64,3 +64,24 @@
 - Hasta ahora quedó así el juego de Trivia. 
 
 ![](imgs/dia3/1.png)
+
+# Día 4: Lógica de juego y puntuación
+
+- Modificamos la clase `Quiz` para:
+  - Llevar el control de respuestas correctas.
+  - Validar las respuestas del usuario con un nuevo método `answer_question`.
+
+- Actualizamos la función `run_quiz()` para:
+  - Mostrar un conteo de las respuestas correctas e incorrectas.
+
+  - Añadir un bucle `while` para que repita la misma pregunta por si el usuario ingresa respuesta fuera de rango o inválida.
+
+  - Añadir una opción de salida ingresando 'e' para finalizar el juego.
+
+- Añadimos pruebas unitarias para verificar la puntuación del juego. 
+  - Aqui presenté un error al hacer el testeo ya que en mi archivo trivia.py tenía `run_quiz()`  que hace que mi programa se ejecute automaticamente, para esto tuve que añadir `if __name__ == "__main__"` antes de `run_quiz()`.
+    - Solo con `run_quiz()`:
+  ![](imgs/dia4/1.png)
+
+    - Con `if __name__ == "__main__"` antes de `run_quiz()`
+  ![](imgs/dia4/2.png)
