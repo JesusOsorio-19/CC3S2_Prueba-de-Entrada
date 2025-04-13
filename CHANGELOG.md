@@ -95,3 +95,5 @@
 - Por último realizamos pruebas de la interfaz para ajustar algún error en ella. 
 
 ![](imgs/dia5/1.png)
+
+# Día 6: Pipeline CI/CD y pruebas de integración
