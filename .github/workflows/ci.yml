@@ -22,11 +22,11 @@ jobs:
           distribution: 'temurin'
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        with:
-          projectBaseDir: .  
+        
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
         with:
+          projectBaseDir: .
           args: > 
             -Dsonar.projectKey=trivia-game-python 
             -Dsonar.sources=.
