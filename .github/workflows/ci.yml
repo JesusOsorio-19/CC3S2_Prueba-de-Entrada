@@ -34,3 +34,6 @@ jobs:
             -Dsonar.projectKey=JesusOsorio-19_CC3S2_Prueba-de-Entrada
             -Dsonar.organization=jesusosorio-19
             -Dsonar.sources=.
+            -Dsonar.c.file.suffixes=-
+            -Dsonar.cpp.file.suffixes=-
+            -Dsonar.objc.file.suffixes=-
