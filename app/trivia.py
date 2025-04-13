@@ -3,11 +3,12 @@ class Question:
 
 # Inicia una pregunta con descripcion, opciones y respuesta correcta.
 
-    def __init__(self, description, options, correct_answer_idx): 
+    def __init__(self, description, options, correct_answer_idx, difficulty): 
 
         self.description = description
         self.options = options
         self.correct_answer_idx = correct_answer_idx
+        self.difficulty = difficulty
 
 # Verifica si la respuesta del jugador es correcta.
 
@@ -44,22 +45,43 @@ def run_quiz():
     print("Bienvenido al juego de Trivia!!!")
     print("Responde las preguntas seleccionando la alternativa correcta.")
 
+    while True:  # Bucle para repetir la seleccion de nivel si la entrada es invalida
+        try:
+            level = int(input("Seleccione el nivel de dificultad (1-3): "))  # Pedimos al usuario que seleccione el nivel de dificultad
+            if level < 1 or level > 3:  # Verificamos si el nivel es válido
+                raise ValueError()
+            break  # Salimos del bucle si la entrada es válida
+        except ValueError:
+            print("Nivel de dificultad no valido. Seleccione un nivel entre 1-3.")
+        
+
     quiz = Quiz()  # Crea una instancia de la clase Quiz
 
-    # Agregamos las 10 preguntas al cuestionario
+    # Agregamos las 10 preguntas al cuestionario, ya cada uno clasificada por nivel de dificultad
 
-    quiz.add_question(Question("Cual es la capital de Bolivia?", ["La Paz", "Oruro", "Sucre", "Santa Cruz"], 2))
-    quiz.add_question(Question("Cual es el oceano mas grande del mundo?", ["Atlantico", "Indico", "Artico", "Pacifico"], 3))
-    quiz.add_question(Question("Quien escribio 'La Ciudad y Los Perros'?", ["Gabriel Garcia Marquez", "Mario Vargas Llosa", "Jorge Luis Borges", "Pablo Neruda"], 1))
-    quiz.add_question(Question("Cual es el continente mas grande?", ["Asia", "Africa", "America", "Europa"], 0))
-    quiz.add_question(Question("Cual es la moneda de Inglaterra?", ["Yen", "Libra Esterlina", "Dolar Ingles", "Euro"], 1))
-    quiz.add_question(Question("Que famoso cientifico formulo la teoria de la relatividad?", ["Issac Newton", "Nikola Tesla", "Albert Einstein", "Stephen Hawking"], 2))
-    quiz.add_question(Question("Que animal tiene el corazon mas grande del mundo?", ["Elefante", "Ballena azul", "Hipopotamo", "Toro"], 1))
-    quiz.add_question(Question("Que elemento quimico tiene el simbolo Au en la tabla periodica?", ["Oro", "Plata", "Cobre", "Aluminio"], 0))
-    quiz.add_question(Question("Que pais tiene forma de bota?", ["Grecia", "Italia", "Espania", "Francia"], 1))
-    quiz.add_question(Question("Quien pinto la Mona Lisa?", ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"], 2))
+    list_questions = [
+        Question("Cual es la capital de Bolivia?", ["La Paz", "Oruro", "Sucre", "Santa Cruz"], 2, 3),
+        Question("Cual es el oceano mas grande del mundo?", ["Atlantico", "Indico", "Artico", "Pacifico"], 3, 1),
+        Question("Quien escribio 'La Ciudad y Los Perros'?", ["Gabriel Garcia Marquez", "Mario Vargas Llosa", "Jorge Luis Borges", "Pablo Neruda"], 1, 2),
+        Question("Cual es el continente mas grande?", ["Asia", "Africa", "America", "Europa"], 0, 1),
+        Question("Cual es la moneda de Inglaterra?", ["Yen", "Libra Esterlina", "Dolar Ingles", "Euro"], 1, 2),
+        Question("Que famoso cientifico formulo la teoria de la relatividad?", ["Issac Newton", "Nikola Tesla", "Albert Einstein", "Stephen Hawking"], 2, 3),
+        Question("Que animal tiene el corazon mas grande del mundo?", ["Elefante", "Ballena azul", "Hipopotamo", "Toro"], 1, 2),
+        Question("Que elemento quimico tiene el simbolo Au en la tabla periodica?", ["Oro", "Plata", "Cobre", "Aluminio"], 0, 1),
+        Question("Que pais tiene forma de bota?", ["Grecia", "Italia", "Espania", "Francia"], 1, 2),
+        Question("Quien pinto la Mona Lisa?", ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"], 2, 3),
+    ]
 
-    for i in range(10):                     # Iteramos 10 veces para hacer 10 preguntas
+    filtered_questions = [q for q in list_questions if q.difficulty == level]  # Filtramos las preguntas por nivel de dificultad
+    
+    for question in filtered_questions:  # Agregamos las preguntas filtradas al cuestionario
+        quiz.add_question(question)  
+
+    if not quiz.questions:  # Verificamos si hay preguntas disponibles para el nivel seleccionado
+        print("No hay preguntas para el nivel seleccionado.")
+        return
+
+    for i in range(len(quiz.questions)):                     # Iteramos 10 veces para hacer 10 preguntas
         question = quiz.get_next_question()
         if question:                                
             print(f"\nPregunta {i + 1}: {question.description}")
