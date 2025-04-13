@@ -9,24 +9,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
+
       - run: pip install -r requirements.txt
       - run: pytest
-      - name: Set up Java 17 for SonarQube
+
+      - name: Set up Java for SonarCloud
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
           distribution: 'temurin'
+          java-version: '17'
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: .
-          args: > 
-            -Dsonar.projectKey=trivia-game-python 
+          args: >
+            -Dsonar.projectKey=JesusOsorio-19_CC3S2_Prueba-de-Entrada
+            -Dsonar.organization=jesusosorio-19
             -Dsonar.sources=.
