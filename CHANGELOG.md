@@ -65,7 +65,7 @@
 
 ![](imgs/dia3/1.png)
 
-# Día 4: Lógica de juego y puntuación
+# Día 4: Sistema de puntuación, manejo de rondas y finalización del juego (Sprint 2)
 
 - Modificamos la clase `Quiz` para:
   - Llevar el control de respuestas correctas.
@@ -85,3 +85,13 @@
 
     - Con `if __name__ == "__main__"` antes de `run_quiz()`
   ![](imgs/dia4/2.png)
+
+## Dia 5: Mejoras en la interfaz de usuario y refinamientos (Sprint 3)
+
+  > NOTA: Previamente en el día 4 ya había implementado mensajes de bienvenida, resumen del final detallado y otras funciones para que el juego sea más dinámico, es por ese motivo que decidí realizar este día 5 el mismo día que se realizó el día 4 ya que no faltaba mucho que implementar.
+
+- Modificamos la clase `Questios` y la función `run_quiz()` para que clasifique las preguntas por niveles del 1 al 3, siendo 1 el más fácil y el 3 lo más difícil.
+
+- Por último realizamos pruebas de la interfaz para ajustar algún error en ella. 
+
+![](imgs/dia5/1.png)
