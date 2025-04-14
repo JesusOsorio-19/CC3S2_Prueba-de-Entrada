@@ -95,3 +95,21 @@
 - Por último realizamos pruebas de la interfaz para ajustar algún error en ella. 
 
 ![](imgs/dia5/1.png)
+
+# Día 6: Pipeline CI/CD y pruebas de integración
+
+- Creamos el archivo `.github/workflows/ci.yml` para automatizar la instalación de dependencias, ejecución de pruebas unitarias(pytest).
+  > En este 1er paso de este día se complicó mucho ya que inicié usando SonarHub el cual me botaba errores ya que el entorno donde se estaba ejecutando el análisis tiene Java 11 y no Java 17, a pesar de que añadí un comando para instalar Java 17. Pero no se hace activo ya que esto corría dentro de un contenedor de Docker con su propia imagen basada en Java 11.
+
+- Modifique mi archivo ci.yml para que funcione con SonarCloud, donde tambien  se requiere que mi proyecto esté registrado en SonarCloud. Una vez acá tambien busqué mi Project key y Organization key, y por último se desactivó el análisis automático de SonarCloud porque generaba conflictos con el análisis propio de GitHub Actions.
+
+- Resolví también errores de compatibilidad con el escáner de SonarCloud, ignoramos los archivos `.c`, `.cpp` y `.mm` para tener una ejecución exitosa.
+
+- Logramos la vinculación correcta del proyecto a la organización de SonarCloud y se validó la integración mediante GitHub Actions en cada push.
+
+![](imgs/dia6/1.png)
+
+- Creamos una prueba de integración. Donde se verifica que la API `/questions/` responda con `201 created` cuando se crea una nueva pregunta correctamente.
+
+![](imgs/dia6/2.png)
+![](imgs/dia6/3.png)
