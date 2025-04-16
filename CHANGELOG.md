@@ -129,4 +129,8 @@
 
 - Modificamos los archivos `main.py`, `trivia.py` para que se puedan ajustar a mejores testeos, por ende se añadieron nuevas pruebas de testeos a `test_trivia.py` y `test_apy.py`.
 
+- Logramos validar que la cobertura de código supere el 90%, aunque no llegamos al 100%.
+
+![](imgs/dia7/5.png)
+
 - Implementamos el uso del archivo .env para garantizar que las configuraciones sencibles estén gestionadas de forma segura.
