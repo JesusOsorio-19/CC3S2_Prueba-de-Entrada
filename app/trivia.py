@@ -10,8 +10,7 @@ class Question:
         self.correct_answer_idx = correct_answer_idx
         self.difficulty = difficulty
 
-# Verifica si la respuesta del jugador es correcta.
-
+    # Verifica si la respuesta del jugador es correcta.
     def is_correct(self, answer_index):
         return self.correct_answer_idx == answer_index
     
@@ -39,26 +38,27 @@ class Quiz:
         else:
             self.incorrect_answers += 1                     
             return False
-    
-def run_quiz():
 
-    print("Bienvenido al juego de Trivia!!!")
-    print("Responde las preguntas seleccionando la alternativa correcta.")
-
+def get_difficulty_level():
     while True:  # Bucle para repetir la seleccion de nivel si la entrada es invalida
         try:
             level = int(input("Seleccione el nivel de dificultad (1-3): "))  # Pedimos al usuario que seleccione el nivel de dificultad
             if level < 1 or level > 3:  # Verificamos si el nivel es válido
                 raise ValueError()
-            break  # Salimos del bucle si la entrada es válida
+            return level  # Retornamos el nivel seleccionado
         except ValueError:
             print("Nivel de dificultad no valido. Seleccione un nivel entre 1-3.")
-        
+
+def run_quiz():
+
+    print("Bienvenido al juego de Trivia!!!")
+    print("Responde las preguntas seleccionando la alternativa correcta.")  
 
     quiz = Quiz()  # Crea una instancia de la clase Quiz
 
-    # Agregamos las 10 preguntas al cuestionario, ya cada uno clasificada por nivel de dificultad
+    level = get_difficulty_level()  # Obtenemos el nivel de dificultad ingresado por del usuario   
 
+    # Agregamos las 10 preguntas al cuestionario, ya cada uno clasificada por nivel de dificultad
     list_questions = [
         Question("Cual es la capital de Bolivia?", ["La Paz", "Oruro", "Sucre", "Santa Cruz"], 2, 3),
         Question("Cual es el oceano mas grande del mundo?", ["Atlantico", "Indico", "Artico", "Pacifico"], 3, 1),
@@ -86,8 +86,8 @@ def run_quiz():
         if question:                                
             print(f"\nPregunta {i + 1}: {question.description}")
 
-        for idx, option in enumerate(question.options):         
-            print(f"{idx}. {option}")       # Mostramos las opciones de respuesta desde 0 a 3
+            for idx, option in enumerate(question.options):         
+                print(f"{idx}. {option}")       # Mostramos las opciones de respuesta desde 0 a 3
         
         while True: #Bucle para repetir la pregunta si la entrada es invalida
             try:

@@ -113,3 +113,20 @@
 
 ![](imgs/dia6/2.png)
 ![](imgs/dia6/3.png)
+
+
+# Día 7: Gestión de configuración, seguridad y pruebas de rendimiento
+
+- Implementamos pruebas de seguridad automatizadas utilizando Bandit para detectear vulnerabilidades
+
+![](imgs/dia7/1.png)
+
+- Añadimos pruebas de carga con Locust para validar el rendimiento de la aplicación bajo carga
+
+![](imgs/dia7/2.png)
+![](imgs/dia7/3.png)
+![](imgs/dia7/4.png)
+
+- Modificamos los archivos `main.py`, `trivia.py` para que se puedan ajustar a mejores testeos, por ende se añadieron nuevas pruebas de testeos a `test_trivia.py` y `test_apy.py`.
+
+- Implementamos el uso del archivo .env para garantizar que las configuraciones sencibles estén gestionadas de forma segura.

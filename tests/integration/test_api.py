@@ -3,6 +3,11 @@ from app.main import app
 
 client = TestClient(app)
 
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200  # Verifica que la respuesta sea 200 (OK)
+    assert response.json() == {"message": "Trivia Game API is running!"}  # Verifica que el mensaje sea correcto
+
 def test_create_question(): 
     # Verifica que la API esté en funcionamiento
     response = client.post("/questions/", json={
